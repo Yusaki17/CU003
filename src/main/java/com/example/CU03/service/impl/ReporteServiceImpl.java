@@ -27,7 +27,7 @@ public class ReporteServiceImpl implements ReporteService {
     @Override
     public ReporteDTO create(ReporteDTO reporteDTO) throws ServiceException {
         if(reporteDTO==null){
-            throw new IllegalArgumentException("El Reporte no puede ser nulo.");
+            throw new IllegalArgumentException("El reporte no puede ser nulo.");
         }
         try {
             Reporte reporte = reporteMapper.toEntity(reporteDTO);
@@ -46,6 +46,10 @@ public class ReporteServiceImpl implements ReporteService {
 
 
         try {
+
+            existente.setEstado(reporteDTO.getEstado());
+            existente.setFechareporte(reporteDTO.getFechareporte());
+            existente.setCodigoreporte(reporteDTO.getCodigoreporte());
 
             if(reporteDTO.getRegistroId()!=null){
                 Registro registro = registroRepository.findById(reporteDTO.getRegistroId())

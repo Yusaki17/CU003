@@ -51,6 +51,11 @@ public class RegistroServiceImpl implements RegistroService {
 
 
         try {
+
+            existente.setEstado(registroDTO.getEstado());
+            existente.setFechahoraingreso(registroDTO.getFechahoraingreso());
+            existente.setObservaciones(registroDTO.getObservaciones());
+
             if(registroDTO.getConductorId()!=null){
                 Conductor conductor = conductorRepository.findById(registroDTO.getConductorId())
                         .orElseThrow(()-> new ResourceNotFoundException("Conductores no encontrado con ID "+aLong));

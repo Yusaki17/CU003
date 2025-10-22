@@ -166,18 +166,17 @@ public class ConductorServiceImpl implements ConductorService {
 
     @Override
     public void deleteById(Long aLong) throws ServiceException {
-        if (aLong == null) {
-            throw new IllegalArgumentException("El ID no puede ser nulo");
-        }
-        Conductor existente = conductorRepository.findById(aLong)
-                .orElseThrow(() -> new ResourceNotFoundException("Conductor no encontrado con ID: " + aLong));
         try {
-            conductorRepository.delete(existente);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
+            if(!conductorRepository.findById(aLong).isPresent()){
+                throw new ResourceNotFoundException("conductor con ID "+aLong+" no fue encontrada");
+            }
+            conductorRepository.deleteById(aLong);
+        }catch (ResourceNotFoundException e) {
+            throw (e);
+        }catch (Exception e) {
+            throw new ServiceException("Error al eliminar el conductor con id " + aLong, e);
         }
     }
-
     @Override
     public List<ConductorDTO> findAll() throws ServiceException {
         List<Conductor> conductores = conductorRepository.findAll();
