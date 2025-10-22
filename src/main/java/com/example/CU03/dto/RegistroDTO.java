@@ -4,16 +4,14 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
+import java.time.LocalDateTime;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 public class RegistroDTO {
     private Long id;
-    private LocalDate fechaingreso;
-    private LocalTime horaingreso;
+    private LocalDateTime fechahoraingreso;
     private String estado;
     private String observaciones;
     private Long conductorId;

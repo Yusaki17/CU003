@@ -5,6 +5,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
@@ -18,10 +20,10 @@ public class Reporte {
     private Long id;
 
     @Column(name = "FECHA_REPORTE")
-    private String fechareporte;
+    private LocalDate fechareporte;
 
-    @Column(name = "CODIGO")
-    private String codigo;
+    @Column(name = "CODIGO_REPORTE")
+    private String codigoreporte;
 
     @Column(name = "ESTADO")
     private String estado;

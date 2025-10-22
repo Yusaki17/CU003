@@ -1,12 +1,11 @@
 package com.example.CU03.entity;
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.time.LocalDate;
-import java.time.LocalTime;
+import java.time.LocalDateTime;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -20,11 +19,8 @@ public class Registro {
     @Column(name = "ID")
     private Long id;
 
-    @Column(name = "FECHA_INGRESO")
-    private LocalDate fechaingreso;
-
-    @Column(name = "HORA_INGRESO")
-    private LocalTime horaingeso;
+    @Column(name = "FECHA_HORA_INGRESO")
+    private LocalDateTime fechahoraingreso;
 
     @Column(name = "ESTADO")
     private String estado;

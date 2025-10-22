@@ -1,8 +1,12 @@
 package com.example.CU03.entity;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -24,9 +28,12 @@ public class Conductor {
 
 
     @Column(name = "TELEFONO")
-    private String telefono;
+    private Integer telefono;
 
     @Column(name = "LICENCIA")
     private String licencia;
 
+    @OneToMany(mappedBy = "conductorId", cascade = CascadeType.ALL, orphanRemoval = true,fetch = FetchType.EAGER)
+    @JsonIgnore
+    private List<Registro> registro = new ArrayList<>();
 }
